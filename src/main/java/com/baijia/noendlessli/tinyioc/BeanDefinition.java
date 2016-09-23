@@ -14,7 +14,22 @@ public class BeanDefinition {
 
     private Object bean;
 
+    private Class beanClass;
+
+    private String beanClassName;
+
+    public BeanDefinition() {}
+
     public BeanDefinition(Object bean) {
         this.bean = bean;
+    }
+
+    public void setBeanClassName(String beanClassName) {
+        this.beanClassName = beanClassName;
+        try {
+            this.beanClass = Class.forName(beanClassName);
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
 }
